@@ -1,0 +1,41 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  role Role @default(BASIC)
+}
+
+model Continent{
+   id String @id @default(uuid())
+   continentName String @unique
+   country Country[] 
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+}
+
+model Country{
+  id String @id @default(uuid())
+  countryName String
+  capitalCity String 
+  continent Continent @relation(fields:[continentId],references:[id])
+  continentId String
+
+  @@unique([countryName,capitalCity])
+  
+}
+
+enum Role{
+  BASIC 
+  EDITOR
+  ADMIN
+}
