@@ -156,9 +156,24 @@ export const resolvers = {
     },
   },
 
-  // Continent: {
-  //   country: async (_parent: any, _args: any, context: Context) => {
-  //     return await context.prisma.country.findMany();
-  //   },
-  // },
+  Continent: {
+    country: async (_parent: any, _args: any, context: Context) => {
+      return await context.prisma.country.findMany({
+        where: {
+          continentId: _parent.id,
+        },
+      });
+    },
+  },
+
+  Country: {
+    continent: async (_parent: any, _args: any, context: Context) => {
+      console.log("parent", _parent);
+      return await context.prisma.continent.findUnique({
+        where: {
+          id: _parent.continentId,
+        },
+      });
+    },
+  },
 };
