@@ -2,10 +2,9 @@
   "name": "falashcard",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module",
+  "main": "index.ts",
   "scripts": {
-    "start": "node index.ts"
+    "start": "ts-node index.ts"
   },
   "devDependencies": {
     "@types/node": "^18.6.3",
