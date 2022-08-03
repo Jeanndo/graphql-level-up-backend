@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon index.ts"
+    "start": "nodemon index.ts"
   },
   "devDependencies": {
     "@types/node": "^18.6.3",
